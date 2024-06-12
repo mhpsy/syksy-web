@@ -21,7 +21,10 @@ export default () => {
             xl: '280px',
           }}
         >
-          <OrgTree onSelect={(id: string) => setOrgId(id)} />
+          <OrgTree onSelect={(id: string[]) => {
+            if (id.length === 0) return;
+            setOrgId(id[0]);
+          }} />
         </ProCard>
         <ProCard title="账户" bordered headerBordered>
           <UserTable orgId={orgId} />
